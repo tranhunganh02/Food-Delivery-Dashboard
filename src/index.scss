@@ -1,0 +1,141 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+}
+.ant-btn-primary{
+  background-color: rgb(25, 154, 22);
+}
+.ant-btn-ghost{
+  background-color: rgb(237, 40, 40);
+  color: #ffffff;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #fff;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+.sidebar{
+  @include tablet {
+    position: absolute;
+    height: '40vh';
+   }
+}
+//table
+.container-table {
+  font-family: 'lato', sans-serif;
+  max-width: 1400px;
+
+}
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 15%;
+  }
+  .col-2 {
+    flex-basis: 15%;
+  }
+  .col-3 {
+    flex-basis: 15%;
+  }
+  .col-4 {
+    flex-basis: 5%;
+  }
+  .col-5 {
+    flex-basis: 35%;
+    text-align: center;
+  }
+  .col-6 {
+    flex-basis: 15%;
+  }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+    .table-row{
+      
+    }
+    li {
+      display: block;
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+//pagination
+.pagination {
+  margin: 25px 0 0 25px ;
+}
+
+.pagination button {
+  color: black;
+  float: left;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  font-size: 25px;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
+}
+
+.pagination button.active {
+  background-color: #95A5A6;
+  color: white;
+}
+
+.pagination button:hover:not(.active) {background-color: #fff;}
+

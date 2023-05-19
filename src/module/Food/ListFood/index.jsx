@@ -20,6 +20,7 @@ const ListFood = () => {
   const [listFoods, setListFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modal, contextHolder] = Modal.useModal();
+  
   const getListFood = async () => {
     const q = query(collection(dbFireStore, "products"));
     const querySnapshot = await getDocs(q);
@@ -54,13 +55,24 @@ const ListFood = () => {
     return (
       <>
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/test1-8afe3.appspot.com/o/Product%2F1683591008420?alt=media&token=d05b2118-8f3d-482a-8c51-6b03e453af55"
-          height={200}
-          width={150}
+          src={Image}
+          height={210}
+          width={220}
         ></img>
       </>
     );
   };
+  const modalUpdate = () => {
+
+  }
+  const renderDate = (date) =>{
+    return(
+      <>
+        {new Date(Number(date)).toLocaleDateString() + " "}
+                    {new Date(Number(date)).toTimeString().slice(0, 8)}
+      </>
+    )
+  }
   const tableColumns = [
     {
       title: "ID",
@@ -70,6 +82,7 @@ const ListFood = () => {
     {
       title: "Name",
       dataIndex: "name",
+      key: 'name'
     },
     {
       title: "Price",
@@ -91,6 +104,7 @@ const ListFood = () => {
       title: "Create_At",
       dataIndex: "create_at",
       key: "create_at",
+      render: renderDate
     },
   ];
   useEffect(() => {
@@ -98,7 +112,7 @@ const ListFood = () => {
     getListFood();
     setTimeout(() => {
       setLoading(false);
-    }, 2200);
+    }, 1000);
   }, []);
   const navigate = useNavigate();
   return (
@@ -119,9 +133,11 @@ const ListFood = () => {
         <Content>
           <Card title={"Order"}>
             <Table
+            tableLayout="fixed"
               loading={loading}
               dataSource={listFoods}
               columns={tableColumns}
+              bordered
               onRow={(Food) => ({
                 onClick: () => navigate(`../food/${Food.id}`),
               })}

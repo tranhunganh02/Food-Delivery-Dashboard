@@ -51,10 +51,12 @@ export default function OrderDetail() {
   return (
     <Layout>
       <Sider style={{ height: "100vh", backgroundColor: "#fff" }}>
-        <Image
-          preview={false}
-          src="../../src/assets/Logo Delivery Food copy.png"
-        />
+      <a href="./">
+          <Image
+            preview={false}
+            src="../../src/assets/Logo Delivery Food copy.png"
+          />
+          </a>
         <SideMenu />
       </Sider>
       <Layout>
